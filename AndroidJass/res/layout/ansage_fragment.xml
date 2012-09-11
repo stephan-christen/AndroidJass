@@ -3,59 +3,44 @@
     android:id="@+id/handFragmentLayout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="horizontal" >
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/handFragmentLayout2"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/selectHerz"
+        android:layout_width="48dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:text="@string/heartsSymbol"
+        android:textColor="@color/red" />
 
-        <Button
-            android:id="@+id/selectHerz"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Herz" />
+    <Button
+        android:id="@+id/selectSchaufel"
+        android:layout_width="46dp"
+        android:layout_height="wrap_content"
+        android:text="@string/spadesSymbol" />
 
-        <Button
-            android:id="@+id/selectSchaufel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Schaufel" />
+    <Button
+        android:id="@+id/selectEcken"
+        android:layout_width="42dp"
+        android:layout_height="wrap_content"
+        android:text="@string/dimondsSymbol"
+        android:textColor="@color/red" />
 
-        <Button
-            android:id="@+id/selectKreuz"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Kreuz" />
+    <Button
+        android:id="@+id/selectKreuz"
+        android:layout_width="39dp"
+        android:layout_height="wrap_content"
+        android:text="@string/clubsSymbol" />
 
-        <Button
-            android:id="@+id/selectEcken"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ecken" />
+    <Button
+        android:id="@+id/selectUndeuffe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/undeuffe" />
 
-    </LinearLayout>
-    
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/handFragmentLayout3"
-        android:layout_width="fill_parent"
-        android:layout_height="66dp"
-        android:orientation="horizontal" >
-    
-        <Button
-            android:id="@+id/selectUndeuffe"
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:text="Undeuffe" />
+    <Button
+        android:id="@+id/selectObenabe"
+        android:layout_width="86dp"
+        android:layout_height="wrap_content"
+        android:text="@string/obenabe" />
 
-        <Button
-            android:id="@+id/selectObenabe"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Obenabe" />
-    
-	</LinearLayout>
 </LinearLayout>

@@ -30,6 +30,8 @@ public class AnsageDialog extends DialogFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		
+		getDialog().setTitle("Choose ansage");
 		View v = inflater.inflate(R.layout.ansage_fragment, container, false);
 
 		getButton(R.id.selectEcken, v).setOnClickListener(
@@ -74,20 +76,6 @@ public class AnsageDialog extends DialogFragment {
 						ansage(new Ansage(CardSuit.DIAMONDS));
 					}
 				});
-
-		// View tv = v.findViewById(R.id.text);
-		// ((TextView)tv).setText("Dialog #" + mNum + ": using style "
-		// + getNameForNum(mNum));
-		//
-		// // Watch for button clicks.
-		// Button button = (Button)v.findViewById(R.id.show);
-		// button.setOnClickListener(new OnClickListener() {
-		// public void onClick(View v) {
-		// // When button is clicked, call up to owning activity.
-		// ((FragmentDialog)getActivity()).showDialog();
-		// }
-		// });
-
 		return v;
 	}
 
@@ -97,10 +85,7 @@ public class AnsageDialog extends DialogFragment {
 	}
 
 	public Button getButton(int id, View view) {
-		
-		Button findViewById = (Button) view.findViewById(id);
-		System.out.println(findViewById.isClickable());
-		return findViewById;
+		return (Button) view.findViewById(id);
 	}
 
 }
