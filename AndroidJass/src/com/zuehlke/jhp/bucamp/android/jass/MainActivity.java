@@ -8,7 +8,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.widget.TextView;
 import ch.mbaumeler.jass.core.JassEngine;
 import ch.mbaumeler.jass.core.Match;
 import ch.mbaumeler.jass.core.game.PlayerToken;
@@ -37,8 +36,14 @@ public class MainActivity extends Activity {
 		names.put(all.get(2), "Spock");
 		names.put(all.get(3), "Doctor Leonard McCoy");
 		strategy = new SimpleStrategyEngine().create();
-		
+
 		game.addObserver(new AnsageObserver(game, getHumanPlayerToken(), this));
+	}
+
+	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
+		game.notifyObservers();
 	}
 
 	public String getName(PlayerToken token) {
@@ -54,13 +59,10 @@ public class MainActivity extends Activity {
 	}
 
 	public void refreshClicked(View view) {
-		game.notifyObservers();
 		Match match = game.getCurrentMatch();
 		if (match.getActivePlayer() != getHumanPlayerToken()) {
 			if (match.getAnsage() == null) {
 				match.setAnsage(strategy.getAnsage(match));
-				((TextView) findViewById(R.id.trumpf)).setText(CardUtil
-						.getAnsageIcon(match.getAnsage()));
 			}
 			game.getCurrentMatch().playCard(strategy.getCardToPlay(match));
 		}

@@ -15,6 +15,18 @@ public final class CardUtil {
 				: Color.BLACK;
 	}
 
+	public static int getResourceFor(Ansage ansage) {
+		if (ansage.isTrumpf(CardSuit.HEARTS)) {
+			return R.string.heartsSymbol;
+		} else if (ansage.isTrumpf(CardSuit.DIAMONDS)) {
+			return R.string.dimondsSymbol;
+		} else if (ansage.isTrumpf(CardSuit.CLUBS)) {
+			return R.string.clubsSymbol;
+		} else {
+			return R.string.spadesSymbol;
+		}
+	}
+
 	public static char getAnsageIcon(Ansage ansage) {
 		if (ansage.isTrumpf(CardSuit.HEARTS)) {
 			return CardUtil.getSuitChar(CardSuit.HEARTS);

@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import ch.mbaumeler.jass.core.Game;
+import ch.mbaumeler.jass.core.Match;
+import ch.mbaumeler.jass.core.game.Ansage;
 import ch.mbaumeler.jass.core.game.PlayedCard;
 import ch.mbaumeler.jass.core.game.PlayerToken;
 import ch.mbaumeler.jass.extended.ui.JassModelObserver;
@@ -58,8 +60,13 @@ public class TableFragment extends Fragment implements JassModelObserver {
 	}
 
 	public void updated(Event arg0, PlayerToken arg1, Object arg2) {
-		List<PlayedCard> cardsOnTable = game.getCurrentMatch()
-				.getCardsOnTable();
+		Match currentMatch = game.getCurrentMatch();
+		Ansage ansage = currentMatch.getAnsage();
+		if (ansage != null) {
+			((TextView) mainActivity.findViewById(R.id.trumpf))
+					.setText(CardUtil.getResourceFor(ansage));
+		}
+		List<PlayedCard> cardsOnTable = currentMatch.getCardsOnTable();
 
 		getTextView(R.id.player1).setText("");
 		getTextView(R.id.player2).setText("");
@@ -68,8 +75,8 @@ public class TableFragment extends Fragment implements JassModelObserver {
 
 		for (PlayedCard playedCard : cardsOnTable) {
 			TextView textView = map.get(playedCard.getPlayer());
-			textView.setText(cardUtil.toCardString(playedCard.getCard()));
-			textView.setTextColor(cardUtil
+			textView.setText(CardUtil.toCardString(playedCard.getCard()));
+			textView.setTextColor(CardUtil
 					.color(playedCard.getCard().getSuit()));
 		}
 	}
