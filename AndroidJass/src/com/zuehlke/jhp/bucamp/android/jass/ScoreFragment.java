@@ -1,3 +1,4 @@
+
 package com.zuehlke.jhp.bucamp.android.jass;
 
 import java.util.List;
