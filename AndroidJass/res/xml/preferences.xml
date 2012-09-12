@@ -7,7 +7,7 @@
         android:key="category_settings">
         
         <EditTextPreference
-            android:key="settings_points"
+            android:key="points"
             android:title="@string/setup_settings_tv_points" 
             android:summary="Number of points a team has to reach to win the game"
             android:dialogTitle="Points"
@@ -16,7 +16,7 @@
         
         
         <EditTextPreference
-            android:key="settings_play_delay"
+            android:key="play_delay"
             android:title="Delay between players" 
             android:summary="Delay between card plays of the different AI players"
             android:dialogTitle="Delay"
@@ -39,14 +39,14 @@
 
         <CheckBoxPreference 
             android:key="team1_player1_ai"
-            android:summary="Activate this is a computer controlled player"
-            android:title="Is a computer controlled player?" 
-            android:defaultValue="true"
+            android:summary="Activate for computer controlled players"
+            android:title="Player 1 AI controlled" 
+            android:defaultValue="false"
         />
         
         <ListPreference 
             android:key="team1_player1_ai_strategy"
-            android:title="AI Strategy"
+            android:title="Player 1 AI Strategy"
             android:summary="Choose the strategy that the AI player uses"
             android:defaultValue="" 
             android:entries="@array/preference_ai_strategies"
@@ -60,13 +60,13 @@
             android:summary="Name of player 2"
             android:dialogTitle="Enter name"
             android:dialogMessage="Name of player 2"    
-            android:defaultValue="Matthias" />
+            android:defaultValue="Fabien" />
 
         <CheckBoxPreference 
             android:key="team1_player2_ai"
-            android:summary="Activate this is a computer controlled player"
-            android:title="Is a computer controlled player?" 
-            android:defaultValue="false"
+            android:summary="Activate for computer controlled players"
+            android:title="Player 2 AI controlled" 
+            android:defaultValue="true"
         />
         
         <ListPreference 
@@ -95,14 +95,14 @@
 
         <CheckBoxPreference 
             android:key="team2_player1_ai"
-            android:summary="Activate this is a computer controlled player"
-            android:title="Is a computer controlled player?" 
-            android:defaultValue="false"
+            android:summary="Activate for computer controlled players"
+            android:title="Player 1 AI controlled" 
+            android:defaultValue="true"
         />
         
         <ListPreference 
             android:key="team2_player1_ai_strategy"
-            android:title="AI Strategy"
+            android:title="Player 1 AI Strategy"
             android:summary="Choose the strategy that the AI player uses"
             android:defaultValue="" 
             android:entries="@array/preference_ai_strategies"
@@ -120,9 +120,9 @@
 
         <CheckBoxPreference 
             android:key="team2_player2_ai"
-            android:summary="Activate this is a computer controlled player"
-            android:title="Is a computer controlled player?" 
-            android:defaultValue="false"
+            android:summary="Activate for computer controlled players"
+            android:title="Player 2 AI controlled" 
+            android:defaultValue="true"
         />
         
         <ListPreference 
