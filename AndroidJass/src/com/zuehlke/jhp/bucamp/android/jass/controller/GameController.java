@@ -21,7 +21,6 @@ public class GameController implements JassModelObserver {
 	public GameController(ObservableGame game) {
 		this.game = game;
 		this.strategy = new SimpleStrategyEngine().create();
-		this.game.addObserver(this);
 	}
 
 	public PlayerToken getHumanPlayerToken() {
