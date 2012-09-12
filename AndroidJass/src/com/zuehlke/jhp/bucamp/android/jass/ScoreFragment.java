@@ -1,4 +1,3 @@
-
 package com.zuehlke.jhp.bucamp.android.jass;
 
 import java.util.List;
@@ -28,6 +27,12 @@ public class ScoreFragment extends Fragment implements JassModelObserver {
 	}
 
 	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		mainActivity.getGame().addObserver(this);
+	}
+
+	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.score_fragment, container, false);
@@ -36,31 +41,31 @@ public class ScoreFragment extends Fragment implements JassModelObserver {
 	public void updated(Event event, PlayerToken token, Object arg) {
 		ObservableGame game = mainActivity.getGame();
 		PlayerTokenRepository playerRepository = game.getPlayerRepository();
-		List<PlayerToken> team1 = playerRepository.getTeam1();
-		List<PlayerToken> team2 = playerRepository.getTeam2();
 		Score totalScore = game.getTotalScore();
-		PlayerToken humanPlayerToken = mainActivity.getGameController().getHumanPlayerToken();
-		
+		PlayerToken humanPlayerToken = mainActivity.getGameController()
+				.getHumanPlayerToken();
+
 		StringBuilder score = new StringBuilder();
-		score.append(getName(team1.get(0)));
-		score.append(" & ");
-		score.append(getName(team1.get(1)));
-		score.append(":");
+		team(score, playerRepository.getTeam1());
 		score.append(totalScore.getPlayerScore(humanPlayerToken));
 		score.append(". ");
-		score.append(getName(team2.get(0)));
-		score.append(" & ");
-		score.append(getName(team2.get(1)));
-		score.append(":");
+		team(score, playerRepository.getTeam2());
 		score.append(totalScore.getOppositeScore(humanPlayerToken));
-		
+
 		textView(R.id.scoreContent).setText(score.toString());
 	}
-	
+
+	private void team(StringBuilder stringBuilder, List<PlayerToken> team) {
+		stringBuilder.append(getName(team.get(0)));
+		stringBuilder.append(" & ");
+		stringBuilder.append(getName(team.get(1)));
+		stringBuilder.append(": ");
+	}
+
 	private String getName(PlayerToken playerToken) {
 		return mainActivity.getName(playerToken);
 	}
-	
+
 	private TextView textView(int id) {
 		return (TextView) mainActivity.findViewById(id);
 	}
