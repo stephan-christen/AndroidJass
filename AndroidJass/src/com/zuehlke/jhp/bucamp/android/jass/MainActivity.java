@@ -34,8 +34,7 @@ public class MainActivity extends Activity {
 		names.put(all.get(2), "Spock");
 		names.put(all.get(3), "Doctor Leonard McCoy");
 
-		game.addObserver(new AnsageObserver(game, gameController
-				.getHumanPlayerToken(), this));
+		game.addObserver(new AnsageObserver(game, gameController.getHumanPlayerToken(), this));
 	}
 
 	@Override
