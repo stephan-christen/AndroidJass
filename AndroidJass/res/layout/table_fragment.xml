@@ -3,7 +3,7 @@
     android:id="@+id/tableLayout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#009900" >
+    android:background="@drawable/shape" >
 
     <TableRow
         android:id="@+id/tableRow1"
@@ -104,8 +104,6 @@
         <TextView
             android:id="@+id/player1"
             android:layout_width="0dp"
-            android:layout_column="1"
-            android:layout_weight="1"
             android:gravity="center" />
 
         <TextView android:id="@+id/empty42" />
