@@ -64,5 +64,4 @@ public class ScoreFragment extends Fragment implements JassModelObserver {
 	private TextView textView(int id) {
 		return (TextView) mainActivity.findViewById(id);
 	}
-
 }
