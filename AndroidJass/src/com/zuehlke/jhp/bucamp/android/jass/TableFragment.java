@@ -45,11 +45,20 @@ public class TableFragment extends Fragment implements JassModelObserver {
 		List<PlayerToken> all = game.getPlayerRepository().getAll();
 
 		map = new HashMap<PlayerToken, TextView>();
-		map.put(all.get(0), (TextView) mainActivity.findViewById(R.id.player1));
-		map.put(all.get(1), (TextView) mainActivity.findViewById(R.id.player2));
-		map.put(all.get(2), (TextView) mainActivity.findViewById(R.id.player3));
-		map.put(all.get(3), (TextView) mainActivity.findViewById(R.id.player4));
+		map.put(all.get(0), findTextView(R.id.player1));
+		map.put(all.get(1), findTextView(R.id.player2));
+		map.put(all.get(2), findTextView(R.id.player3));
+		map.put(all.get(3), findTextView(R.id.player4));
+		
+		findTextView(R.id.player1Name).setText(mainActivity.getName(all.get(0)));
+		findTextView(R.id.player2Name).setText(mainActivity.getName(all.get(1)));
+		findTextView(R.id.player3Name).setText(mainActivity.getName(all.get(2)));
+		findTextView(R.id.player4Name).setText(mainActivity.getName(all.get(3)));
 
+	}
+
+	private TextView findTextView(int id) {
+		return (TextView) mainActivity.findViewById(id);
 	}
 
 	private TextView getTextView(int id) {
