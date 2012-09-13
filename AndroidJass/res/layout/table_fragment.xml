@@ -48,7 +48,6 @@
         <TextView
             android:id="@+id/trumpf"
             android:layout_weight="1"
-       		android:text="a"
             android:gravity="center" 
             android:textAppearance="?android:attr/textAppearanceLarge" 
             android:background="@drawable/trumpf"
