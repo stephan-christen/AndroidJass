@@ -5,10 +5,12 @@ import java.util.List;
 import java.util.Map;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
+import android.view.MenuItem;
 import ch.mbaumeler.jass.core.Game;
 import ch.mbaumeler.jass.core.JassEngine;
 import ch.mbaumeler.jass.core.game.PlayerToken;
@@ -39,10 +41,8 @@ public class MainActivity extends Activity {
 
 		if (savedInstanceState == null || game == null) {
 			game = new JassEngine().createJassGame();
-			observableGame = new ObservableGame(game);
-		} else {
-			observableGame = new ObservableGame(game);
 		}
+		observableGame = new ObservableGame(game);
 		gameController = new GameController(observableGame);
 		observableGame.addObserver(gameController);
 		names = new HashMap<PlayerToken, Player>();
@@ -53,6 +53,7 @@ public class MainActivity extends Activity {
 		names.put(all.get(2), settings.getTeam1().getPlayer2());
 		names.put(all.get(3), settings.getTeam2().getPlayer2());
 
+		
 		observableGame.addObserver(new AnsageObserver(gameController
 				.getHumanPlayerToken(), this));
 	}
@@ -74,10 +75,42 @@ public class MainActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.activity_main, menu);
+		MenuItem restartMenuItem = menu.findItem(R.id.menu_item_restart);
+		if (restartMenuItem == null) {
+			return true;
+		}
+		restartMenuItem
+				.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+
+					public boolean onMenuItemClick(MenuItem item) {
+						restartGame(item);
+						return true;
+					}
+				});
 		return true;
+	}
+
+	public void displaySettingsActivity() {
+		startActivity(new Intent(this, SetupActivity.class));
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.menu_settings:
+			startActivity(new Intent(this, SetupActivity.class));
+			return true;
+
+		default:
+			return super.onOptionsItemSelected(item);
+		}
 	}
 
 	public GameController getGameController() {
 		return gameController;
+	}
+
+	public void restartGame(MenuItem item) {
+		startActivity(new Intent(this, MainActivity.class));
 	}
 }
