@@ -53,7 +53,6 @@ public class MainActivity extends Activity {
 		names.put(all.get(2), settings.getTeam1().getPlayer2());
 		names.put(all.get(3), settings.getTeam2().getPlayer2());
 
-		
 		observableGame.addObserver(new AnsageObserver(gameController
 				.getHumanPlayerToken(), this));
 	}
@@ -97,10 +96,6 @@ public class MainActivity extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case R.id.menu_settings:
-			startActivity(new Intent(this, SetupActivity.class));
-			return true;
-
 		default:
 			return super.onOptionsItemSelected(item);
 		}
