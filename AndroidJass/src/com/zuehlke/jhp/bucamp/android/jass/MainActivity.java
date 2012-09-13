@@ -53,7 +53,7 @@ public class MainActivity extends Activity {
 
 		gameController = new GameController(observableGame, players, settings);
 		observableGame.addObserver(gameController);
-		
+
 		observableGame.addObserver(new AnsageObserver(gameController
 				.getHumanPlayerToken(), this));
 	}
@@ -65,7 +65,7 @@ public class MainActivity extends Activity {
 	}
 
 	public String getName(PlayerToken token) {
-		return names.get(token).getName();
+		return players.get(token).getName();
 	}
 
 	public ObservableGame getGame() {
