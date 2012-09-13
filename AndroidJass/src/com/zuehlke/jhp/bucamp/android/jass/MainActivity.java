@@ -27,7 +27,7 @@ public class MainActivity extends Activity {
 	private ObservableGame observableGame;
 	private GameController gameController;
 
-	private Map<PlayerToken, Player> names = new HashMap<PlayerToken, Player>();
+	private Map<PlayerToken, Player> players = new HashMap<PlayerToken, Player>();
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -43,16 +43,17 @@ public class MainActivity extends Activity {
 			game = new JassEngine().createJassGame();
 		}
 		observableGame = new ObservableGame(game);
-		gameController = new GameController(observableGame);
-		observableGame.addObserver(gameController);
-		names = new HashMap<PlayerToken, Player>();
 
+		players = new HashMap<PlayerToken, Player>();
 		List<PlayerToken> all = observableGame.getPlayerRepository().getAll();
-		names.put(all.get(0), settings.getTeam1().getPlayer1());
-		names.put(all.get(1), settings.getTeam2().getPlayer1());
-		names.put(all.get(2), settings.getTeam1().getPlayer2());
-		names.put(all.get(3), settings.getTeam2().getPlayer2());
+		players.put(all.get(0), settings.getTeam1().getPlayer1());
+		players.put(all.get(1), settings.getTeam2().getPlayer1());
+		players.put(all.get(2), settings.getTeam1().getPlayer2());
+		players.put(all.get(3), settings.getTeam2().getPlayer2());
 
+		gameController = new GameController(observableGame, players, settings);
+		observableGame.addObserver(gameController);
+		
 		observableGame.addObserver(new AnsageObserver(gameController
 				.getHumanPlayerToken(), this));
 	}
